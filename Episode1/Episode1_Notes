@@ -1,0 +1,104 @@
+Episode 1 Notes – Setting Up the Foundation
+
+Welcome to Episode 1 of the Johnson Imports & Exports Salesforce series. In this episode, we laid the groundwork for our fictional international trading company by setting up the core data model and populating initial data. The aim was to establish a strong starting point for all future Salesforce processes.
+
+---
+
+Objects and Fields
+
+We worked with the following standard Salesforce objects:
+
+* Account
+* Contact
+* Lead
+* Opportunity
+
+Custom Fields Created:
+
+Account
+
+* Country\_\_c (Picklist – Global → Country\_List)
+
+Contact
+
+* Role\_in\_Business\_\_c (Picklist)
+* WhatsApp\_Number\_\_c (Phone)
+* Language\_Preference\_\_c (Picklist – Global → Language\_List)
+
+Lead
+
+* Source\_Country\_\_c (Picklist – Global → Country\_List)
+* Preferred\_Communication\_Language\_\_c (Picklist – Global → Language\_List)
+* Estimated\_Deal\_Timeline\_\_c (Picklist)
+  Values:
+
+  * Less than 1 month
+  * 1–3 months
+  * 3–6 months
+  * 6–12 months
+  * More than 1 year
+
+Opportunity
+
+* Shipment\_Type\_\_c (Picklist)
+  Values:
+
+  * Full Container Load (FCL)
+  * Less than Container Load (LCL)
+  * Air Freight
+  * Sea Freight
+  * Road Transport
+  * Rail Freight
+  * Courier/Parcel
+  * Break Bulk
+  * Roll-on/Roll-off (RoRo)
+* Estimated\_Shipment\_\_c (Date)
+* Container\_Count\_\_c (Number)
+* Deal\_Currency\_\_c (Picklist – Global → Currency\_List)
+* Freight\_Agent\_\_c (Text)
+* Deal\_Amount\_\_c (Currency)
+
+---
+
+Global Picklists
+
+We created 3 global picklists to maintain consistency across objects:
+
+| Global Picklist Name | Referenced In                                                                       |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| Country\_List        | Country\_\_c (Account), Source\_Country\_\_c (Lead)                                 |
+| Language\_List       | Language\_Preference\_\_c (Contact), Preferred\_Communication\_Language\_\_c (Lead) |
+| Currency\_List       | Deal\_Currency\_\_c (Opportunity)                                                   |
+
+Note: Full values for all global picklists are stored separately in the file: global\_picklists.md
+
+---
+
+Sample Data Records
+
+We created and inserted sample records for the following:
+
+* Accounts: 10 fictional international trading companies
+* Contacts: 13 contacts associated with different Accounts, with roles, WhatsApp numbers, and language preferences
+* Leads: 10 international leads with estimated deal timelines and country/language origin
+* Opportunities: 10 deals representing real-life logistics scenarios, complete with shipment types, currency, deal amount, and estimated dates
+
+These records are stored in .csv format under:
+
+* accounts.csv
+* contacts.csv
+* leads.csv
+* opportunities.csv
+
+Anyone who downloads the repository can directly use these files to import the same records into their own Salesforce sandbox or developer org.
+
+---
+
+Outcome
+
+By the end of Episode 1, we have:
+
+* Established a clean and scalable data model
+* Introduced reusable global picklists
+* Populated realistic starter data
+* Made the org ready for Flows, Validation Rules, List Views, Reports, or further automation
